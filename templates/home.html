@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="table-responsive">
+     <table class="table table-hover">
+
+        <thead>
+        <tr>
+            <th>Room No</th>
+            <th>Room Type</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for ad in adminData %}
+        <tr>
+            <td>{{ad.RoomNo}}</td>
+            <td>{{ad.RoomType}}</td>
+            {% if ad.status == 'AVAILABLE' %}
+                  <td style="color:green">{{ad.status}}</td>
+            {% else %}
+                  <td style="color:red">{{ad.status}}</td>
+            {% endif %}
+            <td> <a href="/detail/{{ad.RoomNo}}"><button class="btn btn-secondary">Select</button></a></td>
+             {% if session["uname"] == "Hamza" %}
+            <td> <a href="/delete/{{ad.RoomNo}}"><button class="btn btn-danger">Remove</button></a></td>
+             {% endif %}
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+
+  </ul>
+</nav>
+{% endblock %}
