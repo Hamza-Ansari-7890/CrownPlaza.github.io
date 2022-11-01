@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container">
+    <div class="card mx-auto text-center" style="width: 45rem; height: 35rem;">
+        <div class="card-body">
+            <form action="/detail/{{room.RoomNo}}" id="booking" method="post">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" name="RoomNo"
+                                placeholder="Room No" value={{room.RoomNo}} required>
+                            <label for="floatingInput">Room No</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control type" id="floatingInput" name="type"
+                                placeholder="Room type" value={{room.RoomType}} required>
+                            <label for="floatingInput">Room type</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control d1" id="floatingInput" placeholder="Check-in-Date"
+                                name="check_in_date" value={{date}}  required>
+                            <label for="floatingInput">Check-in-Date</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control d2" id="floatingInput" placeholder="Check-out-Date"
+                                name="check_out_date"  required>
+                            <label for="floatingInput">Check-out-Date</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col append1">
+
+                    </div>
+                  <div class="col append2"></div>
+                    <div class="col">
+                          <a class="btn btn-click btn-primary mb-3">Bill</a>
+                    </div>
+                </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Customer Name" name="name"
+                        required>
+                    <label for="floatingInput">Customer Name</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Mobile No." name="number"
+                        required>
+                    <label for="floatingInput">Mobile No.</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="Id"
+                        required>
+                        <option>Aadhar Card</option>
+                        <option>Pan Card</option>
+                    </select>
+                    <label for="floatingSelect">Id proof</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Id proof No." name="IdNo"
+                        required>
+                    <label for="floatingInput">Id Proof No</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" placeholder="Adult male" name="Male"
+                        required>
+                    <label for="floatingInput">Adult male</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" placeholder="Adult female"
+                        name="Female" required>
+                    <label for="floatingInput">Adult female</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" placeholder="Child" name="Child"
+                        required>
+                    <label for="floatingInput">Child</label>
+                </div>
+            </div>
+            <div class="col"> <input type="submit" class="btn btn-primary"> </div>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+{% endblock %}

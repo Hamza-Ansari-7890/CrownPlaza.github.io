@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container">
+    <div class="card mx-auto text-center" style="width: 40rem; height: 24rem;">
+        <div class="card-body">
+            <form action="/edit/{{edit.Room_NO}}" method="post">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput"
+                                placeholder="Customer Name" name="name" value={{edit.Name}} required>
+                            <label for="floatingInput">Customer Name</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput"
+                                placeholder="Mobile No." name="number" value={{edit.Mobile_no}} required>
+                            <label for="floatingInput">Mobile No.</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                                name="Id" value={{edit.Id_Proof}} required>
+                                <option>Aadhar Card</option>
+                                <option>Pan Card</option>
+                            </select>
+                            <label for="floatingSelect">Id proof</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Id proof No."
+                                name="IdNo" value={{edit.Id_No}} required>
+                            <label for="floatingInput">Id Proof No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control" id="floatingInput" placeholder="Check-in-Date"
+                                name="check_in_date" value={{edit.Check_in_Date}} required>
+                            <label for="floatingInput">Check-in-Date</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control" id="floatingInput" placeholder="Check-out-Date"
+                                name="check_out_date" value={{edit.Check_out_Date}} required>
+                            <label for="floatingInput">Check-out-Date</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="floatingInput" placeholder="Adult male"
+                                name="Male" value={{edit.Male}} required>
+                            <label for="floatingInput">Adult male</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="floatingInput" placeholder="Adult female"
+                                name="Female" value={{edit.Female}} required>
+                            <label for="floatingInput">Adult female</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="floatingInput" placeholder="Child"
+                                name="Child" value={{edit.Child}} required>
+                            <label for="floatingInput">Child</label>
+                        </div>
+                    </div>
+                    <div class="col"> <input type="submit" class="btn btn-primary"> </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+
+<div class="table-responsive">
+     <table class="table table-hover">
+        <thead>
+        <tr>
+            <th class="th-sm">Room No</th>
+            <th class="th-sm">Room Type</th>
+            <th class="th-sm">Name</th>
+            <th class="th-sm">Mobile.no</th>
+            <th class="th-sm">Check-in-Date</th>
+            <th class="th-sm">Check-out-Date</th>
+            <th class="th-sm">No. of days</th>
+            <th class="th-sm">Customer Proof</th>
+            <th class="th-sm">Customer ID No.</th>
+            <th class="th-sm">Male</th>
+            <th class="th-sm">Female</th>
+            <th class="th-sm">Child</th>
+            <th class="th-sm">Price</th>
+            <th class="th-sm"></th>
+            <th class="th-sm"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for detail in roomBooking %}
+        <tr>
+           <td>{{detail.Room_NO}}</td>
+           <td>{{detail.Room_type}}</td>
+            <td>{{detail.Name}}</td>
+            <td>{{detail.Mobile_no}}</td>
+            <td>{{detail.Check_in_Date}}</td>
+            <td>{{detail.Check_out_Date}}</td>
+            <td>{{detail.No_of_days}}</td>
+            <td>{{detail.Id_Proof}}</td>
+            <td>{{detail.Id_No}}</td>
+            <td>{{detail.Male}}</td>
+            <td>{{detail.Female}}</td>
+            <td>{{detail.Child}}</td>
+            <td>{{detail.Price}}</td>
+            <td><a href="/edit/{{detail.Room_NO}}" ><button class="btn btn-primary">Edit</button></a></td>
+            <td><a href="/delete/{{detail.Room_NO}}"><button class="btn btn-danger">Delete</button></a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+
+  </ul>
+</nav>
+{% endblock %}
