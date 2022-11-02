@@ -55,7 +55,10 @@ def login():
                     session["uname"] = log.UserName
                     flash("Welcome","success")
                     return redirect('/home')
-            return render_template("login.html")
+                else:
+                    flash('Email or Password dosent match', 'wrong')
+                    return redirect("/")
+            return render_template("index.html")
     except:
         flash('Email or Password dosent match','wrong')
         return redirect("/")
@@ -88,7 +91,7 @@ def Home():
         if "uname" not in session:
             return redirect("/")
         adminData = Admin.query.all()
-        return render_template('index.html',adminData=adminData)
+        return render_template('home.html',adminData=adminData)
     except:
         flash("sorry something went worg")
         return redirect('/')
@@ -116,8 +119,7 @@ def roomBooking(RoomNo):
            Child = request.form.get('Child')
            entry1 = Room_booking(Room_NO=RoomNo,Room_type=room_type,Check_in_Date=check_in_date,Check_out_Date=check_out_date,
                                  No_of_days=no_of_days,Price=price,Name=name,Mobile_no=mobile_no,Id_Proof=Id,Id_No=IdNo,
-                                 Male=Male,Female=Female,Child=Child
-                                 )
+                                 Male=Male,Female=Female,Child=Child)
            db.session.add(entry1)
            db.session.commit()
            flash("Room has been booked","success")
@@ -167,13 +169,30 @@ def remove(Room_NO):
     try:
         if "uname" not in session:
             return redirect("/")
-        remove = Room_booking.query.filter_by(Room_NO=Room_NO).first()
-        room = Admin.query.filter_by(RoomNo=Room_NO).first()
-        room.status = 'AVAILABLE'
-        db.session.delete(remove)
-        db.session.commit()
-        flash("succesfully removed","success")
-        return redirect('/booked')
+
+        if session["uname"] == "Hamza":
+            repair = Admin.query.filter_by(RoomNo=Room_NO).first()
+            db.session.delete(repair)
+            db.session.commit()
+            remove = Room_booking.query.filter_by(Room_NO=Room_NO).first()
+            print(repair)
+            print(remove)
+            if repair == remove:
+                flash("This room Is already occupied by someone","error")
+            flash("removed","success")
+            # remove = Room_booking.query.filter_by(Room_NO=Room_NO).first()
+            db.session.delete(remove)
+            db.session.commit()
+
+            return redirect("/home")
+        else:
+            remove = Room_booking.query.filter_by(Room_NO=Room_NO).first()
+            room = Admin.query.filter_by(RoomNo=Room_NO).first()
+            room.status = 'AVAILABLE'
+            db.session.delete(remove)
+            db.session.commit()
+            flash("succesfully removed","success")
+            return redirect('/booked')
     except:
         flash("Unable to delete the data","error")
         return redirect('/booked')

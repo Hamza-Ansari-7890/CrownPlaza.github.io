@@ -1,5 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
+<!--<div class="form-floating mb-3">-->
+<!--                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example"-->
+<!--                        name="RoomType" required>-->
+<!--                        <option selected>Room Type</option>-->
+<!--                        <option>Non Ac</option>-->
+<!--                        <option>Standard Deluxe AC</option>-->
+<!--                        <option>Luxury AC</option>-->
+<!--                        <option> Suite AC </option>-->
+<!--                    </select>-->
+<!--                    <label for="floatingSelect">Select Room Type</label>-->
+<!--                </div>-->
 <div class="table-responsive">
      <table class="table table-hover">
 
@@ -12,7 +23,7 @@
         </tr>
         </thead>
 
-        <tbody>
+        <tbody id="Filter">
         {% for ad in adminData %}
         <tr>
             <td>{{ad.RoomNo}}</td>
@@ -23,8 +34,10 @@
                   <td style="color:red">{{ad.status}}</td>
             {% endif %}
             <td> <a href="/detail/{{ad.RoomNo}}"><button class="btn btn-secondary">Select</button></a></td>
-             {% if session["uname"] == "Hamza" %}
-            <td> <a href="/delete/{{ad.RoomNo}}"><button class="btn btn-danger">Remove</button></a></td>
+             {% if session["uname"] == "Hamza"%}
+                {% if ad.status == 'AVAILABLE' %}
+            <td><a href="/delete/{{ad.RoomNo}}"><button class="btn btn-danger">Remove</button></a></td>
+                {% endif %}
              {% endif %}
         {% endfor %}
 

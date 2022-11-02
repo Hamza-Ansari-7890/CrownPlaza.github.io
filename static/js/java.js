@@ -95,8 +95,13 @@ $('.append2').append('<div class="form-floating mb-3">'+
     '<label for="floatingInput">Total amount</label></div>')
 }
 $('.btn-click').attr("aria-disabled",true)
-
-
 }
 });
+//$('#floatingSelect').on('change',function(){
+//  value = $(this).val();
+//
+//  $('#Filter').filter(function(){
+//   $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1);
+//  })
+//})
 });
