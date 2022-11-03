@@ -5,52 +5,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="\static\css\style.css">
-    <title>Document</title>
+    <title>Crown Plaza</title>
   <script src="https://kit.fontawesome.com/3568adfd86.js" crossorigin="anonymous"></script>
    <!-- CSS only -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-light mb-5 mx-5 px-5">
+<nav class="navbar navbar-dark bg-dark mb-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Crowne Plaza</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" href="/home" aria-current="page" href="/detail.html">Home</a>
-        </li>
-        <li class="nav-item dropdown">
+    <a class="navbar-brand" href="#"> <i class="fa-solid fa-crown mx-3"></i> Crowne Plaza</a>
+   <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Crown Plaza</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+
+          <div class="offcanvas-body">
+
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                </li>
+<!--                <li class="nav-item">-->
+<!--                  <a class="nav-link" href="#">Link</a>-->
+<!--                </li>-->
+                   <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             User
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item">{{session["uname"]}}</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Data
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/booked">Customer Detail</a></li>
-            <li><a class="dropdown-item" href="/home">Available Rooms</a></li>
-          </ul>
-        </li>
-          {% if session["uname"] == "Hamza" %}
-          <li class="nav-item">
-          <a href="/admin"> <button class="btn btn-primary mx-2"> Admin </button></a>
-          </li>
-          {% endif %}
-        <li class="nav-item">
-          <a href="/logout"> <button class="btn btn-danger mx-2"> logout </button></a>
-        </li>
-      </ul>
-    </div>
-</nav>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Data
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="/booked">Customer Detail</a></li>
+                    <li><a class="dropdown-item" href="/home">Available Rooms</a></li>
+                  </ul>
+                </li>
+                  <hr>
+              </ul>
+              <form class="d-flex mt-3" role="search">
+                   {% if session["uname"] == "Hamza" %}
+                <a href="/admin"> <button class="btn btn-success mx-2"> Admin </button></a>
+                <a href="/logout"> <button class="btn btn-danger mx-2"> logout </button></a>
+                  {% endif %}
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+
                 {% with messages = get_flashed_messages(category_filter=["error"]) %}
                    {% if messages %}
                     {% for msg in messages %}
@@ -67,6 +79,10 @@
                    {% endif %}
                 {% endwith %}
 {% block content %}  {% endblock %}
+
+
+
+
 
 
 
