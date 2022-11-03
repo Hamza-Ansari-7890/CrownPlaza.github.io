@@ -97,6 +97,11 @@ $('.append2').append('<div class="form-floating mb-3">'+
 $('.btn-click').attr("aria-disabled",true)
 }
 });
+let images = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg']
+setInterval(function(){
+ let random = Math.floor(Math.random() * 4);
+ $('.rounded').attr("src","\static\image"images[random])
+}, 800);
 //$('#floatingSelect').on('change',function(){
 //  value = $(this).val();
 //

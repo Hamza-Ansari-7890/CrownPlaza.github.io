@@ -233,6 +233,10 @@ def logout():
     except:
         flash("Something went wrong","error")
 
+@app.route("/display",methods=['GET','POST'])
+def display():
+    return render_template("display.html")
+
 
 if __name__ == "__main__":
     db.create_all()
