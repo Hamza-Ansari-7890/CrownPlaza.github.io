@@ -36,7 +36,12 @@ class Users(db.Model):
     Password = db.Column(db.String(60), nullable=False)
 
 
+
 @app.route("/",methods=['GET','POST'])
+def display():
+    return render_template("index.html")
+
+@app.route("/login",methods=['GET','POST'])
 def login():
     try:
         if "uname" in session:
@@ -57,11 +62,11 @@ def login():
                     return redirect('/home')
                 else:
                     flash('Email or Password dosent match', 'wrong')
-                    return redirect("/")
-            return render_template("index.html")
+                    return redirect("/login")
+            return render_template("login.html")
     except:
         flash('Email or Password dosent match','wrong')
-        return redirect("/")
+        return redirect("/login")
 
 @app.route("/register",methods=['GET','POST'])
 def register():
@@ -79,7 +84,7 @@ def register():
                 entry3 = Users(UserName =username,Email=email, Password=Cpassword)
                 db.session.add(entry3)
                 db.session.commit()
-                return redirect("/")
+                return redirect("/login")
         return render_template("register.html")
     except:
         flash('The Username already exist','error')
@@ -89,19 +94,19 @@ def register():
 def Home():
     try:
         if "uname" not in session:
-            return redirect("/")
+            return redirect("/login")
         adminData = Admin.query.all()
         return render_template('home.html',adminData=adminData)
     except:
         flash("sorry something went worg")
-        return redirect('/')
+        return redirect('/login')
 
 
 @app.route("/detail/<int:RoomNo>", methods=['GET', 'POST'])
 def roomBooking(RoomNo):
     try:
         if "uname" not in session:
-            return redirect("/")
+            return redirect("/login")
         room = Admin.query.filter_by(RoomNo=RoomNo).first()
         if request.method == 'POST':
            RoomNo = request.form.get('RoomNo')
@@ -157,7 +162,7 @@ def admin():
 def booked():
     try:
         if "uname" not in session:
-            return redirect("/")
+            return redirect("/login")
         roomBooking = Room_booking.query.all()
         return render_template('booked.html', roomBooking=roomBooking)
     except:
@@ -168,15 +173,13 @@ def booked():
 def remove(Room_NO):
     try:
         if "uname" not in session:
-            return redirect("/")
+            return redirect("/login")
 
         if session["uname"] == "Hamza":
             repair = Admin.query.filter_by(RoomNo=Room_NO).first()
             db.session.delete(repair)
             db.session.commit()
             remove = Room_booking.query.filter_by(Room_NO=Room_NO).first()
-            print(repair)
-            print(remove)
             if repair == remove:
                 flash("This room Is already occupied by someone","error")
             flash("removed","success")
@@ -202,7 +205,7 @@ def remove(Room_NO):
 def edit(Room_NO):
     try:
         if "uname" not in session:
-            return redirect("/")
+            return redirect("/login")
         edit = Room_booking.query.filter_by(Room_NO=Room_NO).first()
         if request.method == 'POST':
             edit.Name = request.form.get('name')
@@ -229,13 +232,11 @@ def logout():
     try:
         session.pop('uname',None)
         flash("successfully Logout!","logout")
-        return redirect("/")
+        return redirect("/login")
     except:
         flash("Something went wrong","error")
 
-@app.route("/display",methods=['GET','POST'])
-def display():
-    return render_template("display.html")
+
 
 
 if __name__ == "__main__":
