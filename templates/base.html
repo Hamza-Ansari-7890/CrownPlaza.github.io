@@ -13,7 +13,7 @@
 <body>
 <nav class="navbar navbar-dark bg-dark mb-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"> <i class="fa-solid fa-crown mx-3"></i> Crowne Plaza</a>
+    <a class="navbar-brand" href="/"> <i class="fa-solid fa-crown mx-3"></i> Crowne Plaza</a>
    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -54,9 +54,9 @@
               </ul>
               <form class="d-flex mt-3" role="search">
                    {% if session["uname"] == "Hamza" %}
-                <a href="/admin"> <button class="btn btn-success mx-2"> Admin </button></a>
-                <a href="/logout"> <button class="btn btn-danger mx-2"> logout </button></a>
+                <a href="/admin" class="btn btn-success mx-2"> Admin </a>
                   {% endif %}
+                  <a href="/logout" class="btn btn-danger mx-2"> logout </a>
               </form>
             </div>
           </div>
