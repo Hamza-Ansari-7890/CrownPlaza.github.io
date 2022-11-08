@@ -57,7 +57,8 @@ if($('.d2').val() == "")
          'value='+days+' required>'+
      '<label for="floatingInput">No. of Days</label></div>')
  var Type = $('.type').val()
- if (Type == 'Standard')
+ alert(Type)
+ if(Type == 'Standard Deluxe AC')
  {
  total = ((550 + 250)*days)
  $('.append2').append('<div class="form-floating mb-3">'+
@@ -65,7 +66,7 @@ if($('.d2').val() == "")
              'value='+total+' required>'+
      '<label for="floatingInput">Total amount</label></div>')
  }
- else if (Type == 'Luxury')
+ else if(Type == "Luxury AC")
  {
  total = ((550 + 450)*days)
  $('.append2').append('<div class="form-floating mb-3">'+
@@ -73,7 +74,7 @@ if($('.d2').val() == "")
              'value='+total+' required>'+
      '<label for="floatingInput">Total amount</label></div>')
   }
- else if (Type == 'Suite')
+ else if (Type == 'Suite AC')
  {
  total = ((550 + 750)*days)
  $('.append2').append('<div class="form-floating mb-3">'+
@@ -96,7 +97,7 @@ if($('.d2').val() == "")
     setInterval(function(){
      let random = Math.floor(Math.random() * 5);
      $('.rounded').attr("src",`/static/image/${images[random]}`)
-    }, 1500);
+    }, 2200);
 })
 
 
