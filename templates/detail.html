@@ -5,19 +5,19 @@
 <div class="container">
     <div class="card mx-auto text-center" style="width: 45rem; height: 35rem;">
         <div class="card-body">
-            <form action="/detail/{{room.RoomNo}}" id="booking" method="post">
+            <form action = "/detail/{{room.RoomNo}}" id="booking" method="post">
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingInput" name="RoomNo"
-                                placeholder="Room No" value={{room.RoomNo}} required>
+                                placeholder="Room No" value={{room.RoomNo}} readonly>
                             <label for="floatingInput">Room No</label>
                         </div>
                     </div>
                     <div class="col-sm">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control type" id="floatingInput" name="type"
-                                placeholder="Room type" value={{room.RoomType}} required>
+                                placeholder="Room type" value={{room.RoomType}} readonly>
                             <label for="floatingInput">Room type</label>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                     <div class="col-sm">
                         <div class="form-floating mb-3">
                             <input type="date" class="form-control d1" id="floatingInput" placeholder="Check-in-Date"
-                                name="check_in_date" value={{date}}  required>
+                                name="check_in_date" value={{date}}  readonly>
                             <label for="floatingInput">Check-in-Date</label>
                         </div>
                     </div>
