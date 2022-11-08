@@ -30,10 +30,12 @@
             <td>{{ad.RoomType}}</td>
             {% if ad.status == 'AVAILABLE' %}
                   <td style="color:green">{{ad.status}}</td>
+                  <td> <a href="/detail/{{ad.RoomNo}}"><button class="btn btn-secondary">Select</button></a></td>
             {% else %}
                   <td style="color:red">{{ad.status}}</td>
+                  <td><button class="btn btn-secondary disabled">Select</button></td>
             {% endif %}
-            <td> <a href="/detail/{{ad.RoomNo}}"><button class="btn btn-secondary">Select</button></a></td>
+
              {% if session["uname"] == "Hamza"%}
                 {% if ad.status == 'AVAILABLE' %}
             <td><a href="/delete/{{ad.RoomNo}}"><button class="btn btn-danger">Remove</button></a></td>

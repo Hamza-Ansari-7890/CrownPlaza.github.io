@@ -1,46 +1,15 @@
-from flask import Flask, render_template, request , url_for,redirect,session,flash
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-
-app = Flask(__name__)
-app.secret_key="hello"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Crownn_Plaza.db'
-db = SQLAlchemy(app)
-
-
-class Room_booking(db.Model):
-    Room_NO = db.Column(db.Integer, primary_key=True)
-    Room_type = db.Column(db.String(5), nullable=False)
-    Check_in_Date = db.Column(db.String(15), nullable=True)
-    Check_out_Date = db.Column(db.String(15), nullable=False)
-    No_of_days = db.Column(db.Integer, nullable=False)
-    Price = db.Column(db.Integer, nullable=False)
-    Name = db.Column(db.String(50), nullable=False)
-    Mobile_no = db.Column(db.String(15), nullable=False)
-    Id_Proof = db.Column(db.String(15), nullable=False)
-    Id_No = db.Column(db.String(15), nullable=False)
-    Male = db.Column(db.Integer, nullable=False)
-    Female = db.Column(db.Integer, nullable=False)
-    Child = db.Column(db.Integer, nullable=False)
-
-
-class Admin(db.Model):
-    RoomNo = db.Column(db.Integer, primary_key=True)
-    RoomType = db.Column(db.String(50), nullable=False)
-    status = db.Column(db.String(15), nullable=False)
-
-class Users(db.Model):
-    sno = db.Column(db.Integer, primary_key=True, )
-    UserName = db.Column(db.String(60), nullable=False)
-    Email = db.Column(db.String(60), nullable=False)
-    Password = db.Column(db.String(60), nullable=False)
-
+from model import *
 
 
 
 @app.route("/",methods=['GET','POST'])
 def display():
+<<<<<<< HEAD
     return render_template("display.html")
+=======
+    return render_template("index.html")
+>>>>>>> af12fddee387a40ce128112371896d036f2d4e2c
 
 @app.route("/login",methods=['GET','POST'])
 def login():
@@ -64,7 +33,11 @@ def login():
                 else:
                     flash('Email or Password dosent match', 'wrong')
                     return redirect("/login")
+<<<<<<< HEAD
             return render_template("index.html")
+=======
+            return render_template("login.html")
+>>>>>>> af12fddee387a40ce128112371896d036f2d4e2c
     except:
         flash('Email or Password dosent match','wrong')
         return redirect("/login")
@@ -95,7 +68,7 @@ def register():
 def Home():
     try:
         if "uname" not in session:
-            return redirect("/")
+            return redirect("/login")
         adminData = Admin.query.all()
         return render_template('home.html',adminData=adminData)
     except:
@@ -132,7 +105,6 @@ def roomBooking(RoomNo):
            room.status = 'BOOKED'
            db.session.commit()
            return redirect('/home')
-           # return render_template('detail.html', date=datetime.now(),room=room)
         return render_template('detail.html',date=datetime.now(),room=room)
     except:
         flash("The Room is already booked!","error")
@@ -181,8 +153,6 @@ def remove(Room_NO):
             db.session.delete(repair)
             db.session.commit()
             remove = Room_booking.query.filter_by(Room_NO=Room_NO).first()
-            print(repair)
-            print(remove)
             if repair == remove:
                 flash("This room Is already occupied by someone","error")
             flash("removed","success")

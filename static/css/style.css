@@ -1,8 +1,9 @@
-.color{
-
-
-}
-
 .alert{
     text-align:center;
 }
+<<<<<<< HEAD
+=======
+.border{
+      border: 2px solid red;
+}
+>>>>>>> af12fddee387a40ce128112371896d036f2d4e2c
