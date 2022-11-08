@@ -5,11 +5,7 @@ from model import *
 
 @app.route("/",methods=['GET','POST'])
 def display():
-<<<<<<< HEAD
     return render_template("display.html")
-=======
-    return render_template("index.html")
->>>>>>> af12fddee387a40ce128112371896d036f2d4e2c
 
 @app.route("/login",methods=['GET','POST'])
 def login():
@@ -33,11 +29,7 @@ def login():
                 else:
                     flash('Email or Password dosent match', 'wrong')
                     return redirect("/login")
-<<<<<<< HEAD
-            return render_template("index.html")
-=======
             return render_template("login.html")
->>>>>>> af12fddee387a40ce128112371896d036f2d4e2c
     except:
         flash('Email or Password dosent match','wrong')
         return redirect("/login")

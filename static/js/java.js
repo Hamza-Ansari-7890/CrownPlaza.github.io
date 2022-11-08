@@ -18,37 +18,6 @@ $(document).ready(function(){
          $('.pagination').append('<li class = "page-item" ><span class="page-link">'+ i +'</span></li>').show()
     }
  }
-<<<<<<< HEAD
-else if (Type == 'Suite')
-{
-total = ((550 + 750)*days)
-$('.append2').append('<div class="form-floating mb-3">'+
-    '<input type="text" class="form-control price" id="floatingInput" placeholder="Total amount" name="price"'+
-            'value='+total+' required>'+
-    '<label for="floatingInput">Total amount</label></div>')
-}
-else
-{
-total = 550 * days
-$('.append2').append('<div class="form-floating mb-3">'+
-    '<input type="text" class="form-control price" id="floatingInput" placeholder="Total amount" name="price"'+
-            'value='+total+' required>'+
-    '<label for="floatingInput">Total amount</label></div>')
-}
-$('.btn-click').attr("aria-disabled",true)
-}
-});
-let images = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg']
-setInterval(function(){
- let random = Math.floor(Math.random() * 4);
- $('.rounded').attr("src","\static\image"images[random])
-}, 800);
-//$('#floatingSelect').on('change',function(){
-//  value = $(this).val();
-//
-//  $('#Filter').filter(function(){
-//   $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1);
-=======
 
  $('.pagination li:first-of-type').addClass('active')
 
@@ -137,7 +106,37 @@ if($('.d2').val() == "")
 
 
 
-
+//
+//else if (Type == 'Suite')
+//{
+//total = ((550 + 750)*days)
+//$('.append2').append('<div class="form-floating mb-3">'+
+//    '<input type="text" class="form-control price" id="floatingInput" placeholder="Total amount" name="price"'+
+//            'value='+total+' required>'+
+//    '<label for="floatingInput">Total amount</label></div>')
+//}
+//else
+//{
+//total = 550 * days
+//$('.append2').append('<div class="form-floating mb-3">'+
+//    '<input type="text" class="form-control price" id="floatingInput" placeholder="Total amount" name="price"'+
+//            'value='+total+' required>'+
+//    '<label for="floatingInput">Total amount</label></div>')
+//}
+//$('.btn-click').attr("aria-disabled",true)
+//}
+//});
+//let images = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg']
+//setInterval(function(){
+// let random = Math.floor(Math.random() * 4);
+// $('.rounded').attr("src","\static\image"images[random])
+//}, 800);
+////$('#floatingSelect').on('change',function(){
+////  value = $(this).val();
+////
+////  $('#Filter').filter(function(){
+////   $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1);
+//=======
 
 
 
@@ -148,7 +147,7 @@ if($('.d2').val() == "")
 //   $('.rounded').attr("src","\static\image"images[random])
 //  }, 800);
 
->>>>>>> af12fddee387a40ce128112371896d036f2d4e2c
+
 //  })
 
  //$('#floatingSelect').on('change',function(){
