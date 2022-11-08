@@ -91,9 +91,12 @@ if($('.d2').val() == "")
  }
  $('.btn-click').attr("aria-disabled",true)
  }
-
-   })
-
+ })
+ let images = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg']
+    setInterval(function(){
+     let random = Math.floor(Math.random() * 5);
+     $('.rounded').attr("src",`/static/image/${images[random]}`)
+    }, 1500);
 })
 
 
@@ -141,11 +144,7 @@ if($('.d2').val() == "")
 
 
 
-//  let images = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg']
-//  setInterval(function(){
-//   let random = Math.floor(Math.random() * 4);
-//   $('.rounded').attr("src","\static\image"images[random])
-//  }, 800);
+
 
 
 //  })

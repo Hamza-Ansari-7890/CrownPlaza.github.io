@@ -5,7 +5,7 @@ from model import *
 
 @app.route("/",methods=['GET','POST'])
 def display():
-    return render_template("display.html")
+    return render_template("index.html")
 
 @app.route("/login",methods=['GET','POST'])
 def login():
@@ -197,7 +197,7 @@ def logout():
     try:
         session.pop('uname',None)
         flash("successfully Logout!","logout")
-        return redirect("/login")
+        return redirect("/")
     except:
         flash("Something went wrong","error")
 
