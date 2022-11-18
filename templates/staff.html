@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="table-responsive">
+     <table class="table table-hover">
+        <thead>
+        <tr>
+            <th class="th-sm">Sr.No.</th>
+            <th class="th-sm">Username</th>
+            <th class="th-sm">Email</th>
+            <th class="th-sm">Password</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in login %}
+        <tr>
+            <td>{{user.sno}}</td>
+            <td>{{user.UserName}}</td>
+            <td>{{user.Email}}</td>
+            <td>{{user.Password}}</td>
+            <td><a href="/update/{{user.sno}}" ><button class="btn btn-primary">Edit</button></a></td>
+            <td><a href="/remove/{{user.sno}}"><button class="btn btn-danger">Delete</button></a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+
+  </ul>
+</nav>
+ <div class="container mt-5">
+    <div class="row">
+    <div class="col-sm card mx-auto text-center" style="width: 25rem; height: auto;">
+      <div class="card-header">
+        <h4 class="card-title">Crown Plaza</h4>
+        <span>Hey, Enter your correct details to create a new account</span>
+     </div>
+      <div class="card-body">
+        <form action="/register" method="post">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username" required>
+            <label for="floatingInput">Username</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email"
+              required>
+            <label for="floatingInput">Email address</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Enter Password" name="Npass"
+              required>
+            <label for="floatingPassword">Password</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingCPassword" placeholder="Confirm Password"
+              name="Cpass" required>
+            <label for="floatingCPassword">Confirm Password</label>
+          </div>
+
+          <input type="submit" class="btn btn-primary mb-3 px-5" value="Create New Account">
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+{% endblock %}

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+//pagination code start
     var trnum = 0;
     var maxRows = 7;
     var totalRows = $('table tbody tr').length;
@@ -40,6 +41,8 @@ $(document).ready(function(){
          }
       });
    });
+//   pagination end
+//   bill start
    $('.btn-click').click(function(){
 if($('.d2').val() == "")
  {
@@ -57,7 +60,7 @@ if($('.d2').val() == "")
          'value='+days+' required>'+
      '<label for="floatingInput">No. of Days</label></div>')
  var Type = $('.type').val()
- alert(Type)
+
  if(Type == 'Standard Deluxe AC')
  {
  total = ((550 + 250)*days)
@@ -93,66 +96,12 @@ if($('.d2').val() == "")
  $('.btn-click').attr("aria-disabled",true)
  }
  })
+// bill end
+//image changing start
  let images = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg']
     setInterval(function(){
      let random = Math.floor(Math.random() * 5);
      $('.rounded').attr("src",`/static/image/${images[random]}`)
     }, 2200);
+//    image changing end
 })
-
-
-
-
-
-
-
-
-
-
-
-//
-//else if (Type == 'Suite')
-//{
-//total = ((550 + 750)*days)
-//$('.append2').append('<div class="form-floating mb-3">'+
-//    '<input type="text" class="form-control price" id="floatingInput" placeholder="Total amount" name="price"'+
-//            'value='+total+' required>'+
-//    '<label for="floatingInput">Total amount</label></div>')
-//}
-//else
-//{
-//total = 550 * days
-//$('.append2').append('<div class="form-floating mb-3">'+
-//    '<input type="text" class="form-control price" id="floatingInput" placeholder="Total amount" name="price"'+
-//            'value='+total+' required>'+
-//    '<label for="floatingInput">Total amount</label></div>')
-//}
-//$('.btn-click').attr("aria-disabled",true)
-//}
-//});
-//let images = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg']
-//setInterval(function(){
-// let random = Math.floor(Math.random() * 4);
-// $('.rounded').attr("src","\static\image"images[random])
-//}, 800);
-////$('#floatingSelect').on('change',function(){
-////  value = $(this).val();
-////
-////  $('#Filter').filter(function(){
-////   $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1);
-//=======
-
-
-
-
-
-
-
-//  })
-
- //$('#floatingSelect').on('change',function(){
- //  value = $(this).val();
- //
- //  $('#Filter').filter(function(){
- //   $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1);
- //  })

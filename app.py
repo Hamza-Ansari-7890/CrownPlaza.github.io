@@ -50,11 +50,11 @@ def register():
                 entry3 = Users(UserName =username,Email=email, Password=Cpassword)
                 db.session.add(entry3)
                 db.session.commit()
-                return redirect("/login")
+                return redirect("/staff")
         return render_template("register.html")
     except:
         flash('The Username already exist','error')
-        return redirect('/register')
+        return render_template('register.html')
 
 @app.route("/home")
 def Home():
@@ -120,9 +120,38 @@ def admin():
         flash("Sorry! This Room number is already exists","error")
         return redirect("/admin")
 
-  # if "Hamza" in session:
-        #     flash("welcome admin","success")
-        #     return render_template("admin.html")
+@app.route("/staff")
+def staff():
+    try:
+        login = Users.query.all()
+        return render_template('staff.html', login=login)
+    except:
+        flash("something went wrong!", "error")
+        return redirect('/admin')
+
+@app.route("/remove/<int:sno>")
+def staffDelete(sno):
+    userRemove = Users.query.filter_by(sno=sno).first()
+    db.session.delete(userRemove)
+    db.session.commit()
+    return redirect("/staff")
+
+@app.route("/update/<int:sno>", methods = ['GET','POST'])
+def staffUpdate(sno):
+    update = Users.query.filter_by(sno=sno).first()
+    if request.method == "POST":
+        update.UserName = request.form.get('username')
+        update.Email = request.form.get('email')
+        Npassword = request.form.get('Npass')
+        update.Password = request.form.get('Cpass')
+        if Npassword != update.Password:
+            flash("password dosen't matched", 'error')
+        else:
+            db.session.commit()
+            flash("Account has been updated", 'success')
+            return redirect('/staff')
+    return render_template("register.html",update=update)
+
 @app.route("/booked")
 def booked():
     try:

@@ -1,68 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block content %}
 
-<head>
-  <meta charset="UTF-8">
-  <title>register</title>
-  <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-  <link rel="stylesheet" href="\static\css\style.css">
-</head>
-
-<body>
-  <div class="container mt-5">
+ <div class="container mt-5">
     <div class="row">
     <div class="col-sm card mx-auto text-center" style="width: 25rem; height: auto;">
       <div class="card-header">
         <h4 class="card-title">Crown Plaza</h4>
         <span>Hey, Enter your correct details to create a new account</span>
-      </div>
+     </div>
       <div class="card-body">
-        {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages(category_filter=["wrong"]) %}
         {% if messages %}
         {% for msg in messages %}
-            <div class="alert alert-danger mb-3" style="padding: 2px 0px;">{{msg}}</div>1
+        <div class="alert alert-danger mb-3" style="padding: 2px 0px;">{{msg}}</div>
         {% endfor %}
         {% endif %}
         {% endwith %}
-        <form action="/register" method="post">
+        {% with messages = get_flashed_messages(category_filter=["success"]) %}
+        {% if messages %}
+        {% for msg in messages %}
+        <div class="alert alert-success mb-3" style="padding: 2px 0px;">{{msg}}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form action="/update/{{update.sno}}" method="post">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username" required>
+            <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username" value={{update.UserName}} required>
             <label for="floatingInput">Username</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email"
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" value={{update.Email}}
               required>
             <label for="floatingInput">Email address</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Enter Password" name="Npass"
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Enter Password" name="Npass" value={{update.Password}}
               required>
             <label for="floatingPassword">Password</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingCPassword" placeholder="Confirm Password"
+            <input type="password" class="form-control" id="floatingCPassword" placeholder="Confirm Password" value={{update.Password}}
               name="Cpass" required>
             <label for="floatingCPassword">Confirm Password</label>
           </div>
 
-          <input type="submit" class="btn btn-primary mb-3 px-5" value="Create New Account">
+          <input type="submit" class="btn btn-primary mb-3 px-5" value="update account">
         </form>
-        <span>Already have an Account? </span><a href="/">login</a>
       </div>
     </div>
   </div>
   </div>
-
-
-  <!-- JavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-    crossorigin="anonymous"></script>
-</body>
-
-</html>
+{% endblock %}
