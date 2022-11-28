@@ -37,14 +37,16 @@ def login():
 @app.route("/register",methods=['GET','POST'])
 def register():
     try:
+        if "uname" not in session:
+            return redirect("/login")
         if request.method=='POST':
             username = request.form.get('username')
             email=request.form.get('email')
-            Npassword=request.form.get('Npass')
+            Npassword= request.form.get('Npass')
             Cpassword = request.form.get('Cpass')
             if Npassword != Cpassword:
                 flash("password dosen't matched",'error')
-                return render_template("register.html")
+                return redirect("/staff")
             else:
                 flash("Account has been Created!",'success')
                 entry3 = Users(UserName =username,Email=email, Password=Cpassword)
@@ -145,7 +147,7 @@ def staffUpdate(sno):
         Npassword = request.form.get('Npass')
         update.Password = request.form.get('Cpass')
         if Npassword != update.Password:
-            flash("password dosen't matched", 'error')
+            flash("Password dosen't matched", 'error')
         else:
             db.session.commit()
             flash("Account has been updated", 'success')
@@ -168,19 +170,10 @@ def remove(Room_NO):
     try:
         if "uname" not in session:
             return redirect("/login")
-
         if session["uname"] == "Hamza":
             repair = Admin.query.filter_by(RoomNo=Room_NO).first()
             db.session.delete(repair)
             db.session.commit()
-            remove = Room_booking.query.filter_by(Room_NO=Room_NO).first()
-            if repair == remove:
-                flash("This room Is already occupied by someone","error")
-            flash("removed","success")
-            # remove = Room_booking.query.filter_by(Room_NO=Room_NO).first()
-            db.session.delete(remove)
-            db.session.commit()
-
             return redirect("/home")
         else:
             remove = Room_booking.query.filter_by(Room_NO=Room_NO).first()

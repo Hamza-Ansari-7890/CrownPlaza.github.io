@@ -42,8 +42,10 @@
             <td>{{detail.Female}}</td>
             <td>{{detail.Child}}</td>
             <td>{{detail.Price}}</td>
+            {% if session["uname"] != "Hamza" %}
             <td><a href="/edit/{{detail.Room_NO}}" ><button class="btn btn-primary">Edit</button></a></td>
             <td><a href="/delete/{{detail.Room_NO}}"><button class="btn btn-danger">Delete</button></a></td>
+            {% endif %}
         </tr>
         {% endfor %}
         </tbody>
